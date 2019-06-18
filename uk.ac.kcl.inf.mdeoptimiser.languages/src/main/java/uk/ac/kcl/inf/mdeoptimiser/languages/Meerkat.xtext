@@ -1,0 +1,87 @@
+grammar uk.ac.kcl.inf.mdeoptimiser.languages.Meerkat with org.eclipse.xtext.xbase.Xbase
+
+generate meerkat "http://www.ac.uk/kcl/inf/mdeoptimiser/languages/Meerkat"
+
+Analyser:
+	problems+=Problem*;
+	
+Problem:
+	'using' 'problem' name=ID '{'
+		configuration=ProblemConfiguration
+		models+=Model*
+		analysis=AnalysisConfiguration
+	'}'
+	;
+
+ProblemConfiguration:
+	'experiment' 'configuration' name=ID '{'
+		objective+=Objective+
+		constraint+=Constraint*
+		batches=Batches
+		terminationCondition+=TerminationCondition
+	'}'
+;
+
+Model:
+	'load' 'model' name=ID '{'
+		tools+=Tool
+	'}'
+;
+
+AnalysisConfiguration:
+	'analysis' '{'
+		(referenceSet=ReferenceSet)?
+		summary=Summary
+	'}'
+;
+
+//TODO Add validation for the supported parameters here
+Summary: 
+	'summary' '{'
+		parameters+=Parameter+
+	'}'
+;
+
+Objective: 
+	'objective' ':' name=ID
+;
+
+Constraint:
+	'constraint' ':' name=ID
+;
+
+Batches:
+	'batches' ':' number=INT
+;
+
+//TODO Add validation for the supported parameters here
+TerminationCondition: 
+	'termination' 'condition' '{'
+		parameters+=Parameter+
+	'}'
+;
+
+Tool: 
+	'tool' name=ID '{'
+		configurations+=ToolConfiguration
+	'}'
+;
+
+ToolConfiguration:
+	'configuration' name=QualifiedName '{'
+		parameters+=Parameter+
+	'}'
+;
+
+ReferenceSet:
+	'using' 'reference' 'set' location=STRING
+;
+
+Parameter:
+	name=QualifiedName ":" value=ParameterValue
+;
+
+ParameterValue:
+	(numeric=Number | functional=ID | parametric=ID '(' (params+=(XNumberLiteral | XStringLiteral)
+    (',' params+=(XNumberLiteral | XStringLiteral))*)+')')
+;

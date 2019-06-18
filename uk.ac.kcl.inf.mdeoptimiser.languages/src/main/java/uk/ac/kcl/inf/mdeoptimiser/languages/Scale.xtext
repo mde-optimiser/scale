@@ -1,0 +1,31 @@
+grammar uk.ac.kcl.inf.mdeoptimiser.languages.Scale with org.eclipse.xtext.xbase.Xbase
+
+generate scale "http://www.ac.uk/kcl/inf/mdeoptimiser/languages/Scale"
+
+Scale:
+	infrastructure=Infrastructure
+	tasks+=Task*;
+
+Infrastructure: 
+	'infrastructure' name=ID '{'
+	
+	'type' type=STRING
+	'account' account=STRING
+	'}'
+;
+
+Task:
+	'task' name=ID '{'
+		run=RunConfiguration
+		dependencies=Dependency
+	'}'
+;
+
+RunConfiguration:
+	'run' name=ID
+;
+
+/**This is the classpath dependency */
+Dependency:
+	'dependencies' name=STRING
+;

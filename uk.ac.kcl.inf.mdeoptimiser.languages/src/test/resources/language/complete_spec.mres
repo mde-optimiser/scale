@@ -1,0 +1,37 @@
+using problem "problem" {
+
+	experiment configuration {
+		objective: name
+		objective: name
+		constraint: name
+		constraint: name
+		batches: <number of batches>
+		(termination condition {
+			time:
+			evolutions:
+		})?
+	}
+
+	load model <model name A> {
+		tool <tool name> configuration <configuration-name> parser model_results_loader_java_class()
+		tool <tool name> configuration <configuration-name> parser model_results_loader_java_class()
+	}
+
+	load model <model name B> {
+		for tool <tool name> using loader model_results_loader_java_class()
+		for tool <tool name> using loader model_results_loader_java_class()
+	}
+
+	analysis {
+		using reference set <reference-set-file>
+		generate summary {
+			format: latex
+			format: pdf
+			format: csv
+			format: json
+			mean: hv, gd, runtime, evolutions
+			median: hypervolume
+			best: hypervolume, runtime, solution(so)
+		}
+	}
+}
