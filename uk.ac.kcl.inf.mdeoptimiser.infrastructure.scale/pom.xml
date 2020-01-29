@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>uk.ac.kcl.inf.mdeoptimiser.languages.parent</artifactId>
+    <groupId>uk.ac.kcl.inf.mdeoptimiser.languages</groupId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale</artifactId>
+
+  <name>uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+    <packaging>bundle</packaging>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bom</artifactId>
+                <version>1.11.577</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>5.4.2</version>
+            <type>pom</type>
+                <scope>import</scope>
+        </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>uk.ac.kcl.inf.mdeoptimiser.infrastructure.*</Export-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <echo>ANT TASK - copying files.... from ${basedir}</echo>
+                                <copy todir="${basedir}/../interfaces/eclipse/uk.ac.kcl.inf.mdeoptimiser.languages.ui/libraries/" overwrite="true" flatten="true">
+                                    <fileset dir="${basedir}">
+                                        <include name="target/*.jar" />
+                                    </fileset>
+                                </copy>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+  <dependencies>
+      <!-- AWS Dependencies -->
+      <dependency>
+          <groupId>com.amazonaws</groupId>
+          <artifactId>aws-java-sdk-batch</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.amazonaws</groupId>
+          <artifactId>aws-java-sdk-s3</artifactId>
+      </dependency>
+      <dependency>
+          <groupId>com.amazonaws</groupId>
+          <artifactId>aws-java-sdk-ec2</artifactId>
+      </dependency>
+      <!-- End of AWS dependencies -->
+      <dependency>
+          <groupId>org.junit.jupiter</groupId>
+          <artifactId>junit-jupiter-api</artifactId>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.12</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>uk.ac.kcl.inf.mdeoptimiser.languages</groupId>
+          <artifactId>uk.ac.kcl.inf.mdeoptimiser.languages</artifactId>
+          <version>1.0.0-SNAPSHOT</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.eclipse.xtext</groupId>
+          <artifactId>org.eclipse.xtext.testing</artifactId>
+          <version>2.18.0</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.8.5</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>args4j</groupId>
+          <artifactId>args4j</artifactId>
+          <version>2.33</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.zeroturnaround</groupId>
+          <artifactId>zt-exec</artifactId>
+          <version>1.10</version>
+          <scope>compile</scope>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+      <dependency>
+          <groupId>commons-io</groupId>
+          <artifactId>commons-io</artifactId>
+          <version>2.6</version>
+      </dependency>
+      <dependency>
+          <groupId>org.moeaframework</groupId>
+          <artifactId>moeaframework</artifactId>
+          <version>2.12</version>
+      </dependency>
+      <dependency>
+          <groupId>com.opencsv</groupId>
+          <artifactId>opencsv</artifactId>
+          <version>3.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.8.1</version>
+      </dependency>
+      <dependency>
+          <groupId>p2.osgi.bundle</groupId>
+          <artifactId>org.apache.commons.math3</artifactId>
+          <version>3.4.1</version>
+      </dependency>
+      <dependency>
+          <groupId>tech.tablesaw</groupId>
+          <artifactId>tablesaw-core</artifactId>
+          <version>0.32.7</version>
+      </dependency>
+      <dependency>
+          <groupId>tech.tablesaw</groupId>
+          <artifactId>tablesaw-jsplot</artifactId>
+          <version>0.32.7</version>
+      </dependency>
+      <dependency>
+          <groupId>commons-cli</groupId>
+          <artifactId>commons-cli</artifactId>
+          <version>1.2</version>
+      </dependency>
+  </dependencies>
+
+
+</project>

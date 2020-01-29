@@ -13,8 +13,8 @@ using problem "problem" {
 	}
 
 	load model <model name A> {
-		tool <tool name> configuration <configuration-name> parser model_results_loader_java_class()
-		tool <tool name> configuration <configuration-name> parser model_results_loader_java_class()
+		tool <tool name> configuration <configuration-name> uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser model_results_loader_java_class()
+		tool <tool name> configuration <configuration-name> uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser model_results_loader_java_class()
 	}
 
 	load model <model name B> {

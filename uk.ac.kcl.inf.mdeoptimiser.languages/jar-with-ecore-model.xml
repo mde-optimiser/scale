@@ -15,5 +15,9 @@
 			<outputDirectory>model/generated</outputDirectory>
 			<directory>model/generated</directory>
 		</fileSet>
+		<fileSet>
+			<outputDirectory>META-INF</outputDirectory>
+			<directory>src/main/resources/META-INF</directory>
+		</fileSet>
 	</fileSets>
 </assembly>

@@ -154,3 +154,13 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+
+# Ignore test artifacts
+experiment-artifacts/
+experiment-results/
+
+#Ignore build files
+interfaces/eclipse/uk.ac.kcl.inf.mdeoptimiser.languages.ui/libraries/
+!interfaces/eclipse/uk.ac.kcl.inf.mdeoptimiser.languages.ui/libraries/.gitkeep
+# Ignore docker build folder
+uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.executor/infrastructure/

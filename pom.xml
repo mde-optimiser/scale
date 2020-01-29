@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uk.ac.kcl.inf.mdeoptimiser.languages</groupId>
 	<version>1.0.0-SNAPSHOT</version>
@@ -7,15 +7,16 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.16.0</xtextVersion>
+		<xtextVersion>2.18.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<modules>
 		<module>uk.ac.kcl.inf.mdeoptimiser.languages</module>
 		<module>uk.ac.kcl.inf.mdeoptimiser.languages.ide</module>
-        <module>uk.ac.kcl.inf.mdeoptimiser.results.analyser</module>
-    </modules>
-	<build>
+        <module>uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale</module>
+        <module>uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.executor</module>
+  </modules>
+    <build>
 		<pluginManagement>
 			<plugins>
                 <!-- Run source code formatter using Google Java coding standard -->
@@ -33,6 +34,15 @@
                         </execution>
                     </executions>
                 </plugin>
+       <!--<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+          <outputDirectory>../interfaces/eclipse/uk.ac.kcl.inf.mdeoptimiser.languages.ui/libraries/</outputDirectory>
+        </configuration>
+      </plugin>-->
+      
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -66,7 +76,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 								<pluginExecution>
@@ -88,7 +98,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -98,32 +108,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<repositories>
-		<repository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
-			<url>http://nexus.codehaus.org/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
 	<profiles>
 		<profile>
 			<id>macos</id>
@@ -184,7 +168,6 @@
             </build>
         </profile>
 	</profiles>
-
 	<dependencies>
 	</dependencies>
 </project>

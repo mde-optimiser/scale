@@ -6,6 +6,12 @@ import org.eclipse.xtext.ui.generator.*
 
 var rootPath = ".."
 
+var eclipseProjectName = "uk.ac.kcl.inf.mdeoptimiser.languages.ui"
+var eclipseProjectPath = "${rootPath}/interfaces/eclipse/${eclipseProjectName}"
+var eclipseSrc = "${eclipseProjectPath}/src/"
+var eclipseSrcGen = "${eclipseProjectPath}/src-gen/"
+var eclipseMetaInf = "${eclipseProjectPath}/META-INF"
+
 Workflow {
 
 	component = XtextGenerator {
@@ -17,12 +23,23 @@ Workflow {
 				runtimeTest = {
 					enabled = true	
 				}
-
+								
 				genericIde = {
 					enabled = true
 				}
-				mavenLayout = true
 				
+				eclipsePlugin = {
+					enabled = true
+					name = eclipseProjectName
+					root = eclipseProjectPath
+					src = eclipseSrc
+					srcGen = eclipseSrcGen
+					metaInf = eclipseMetaInf
+				}
+				
+				createEclipseMetaData = true
+				mavenLayout = true
+	
 			}
 			code = {
 				encoding = "UTF-8"
@@ -36,7 +53,6 @@ Workflow {
 		language = StandardLanguage {
 			name = "uk.ac.kcl.inf.mdeoptimiser.languages.Meerkat"
 			fileExtensions = "mres"
-			
 			
 			xbaseSupport = auto-inject {
 				generateXtendInferrer = false
@@ -60,8 +76,6 @@ Workflow {
 			scopeProvider = {
 				generateStub = true
 			}
-			
-
 		}
 		
 		language = StandardLanguage {

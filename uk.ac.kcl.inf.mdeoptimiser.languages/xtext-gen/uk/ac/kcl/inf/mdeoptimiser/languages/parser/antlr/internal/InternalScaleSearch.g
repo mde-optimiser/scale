@@ -8,30 +8,30 @@ options {
 }
 
 @lexer::header {
-package uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal;
+package uk.ac.kcl.inf.mdeoptimiser.languages.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.internal;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.
-import org.eclipse.xtext.parser.antlr.Lexer;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.Lexer;
 }
 
-@parser::header {
-package uk.ac.kcl.inf.mdeoptimiser.languages.parser.antlr.internal;
+@uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser::header {
+package uk.ac.kcl.inf.mdeoptimiser.languages.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.internal;
 
 import org.eclipse.xtext.*;
-import org.eclipse.xtext.parser.*;
-import org.eclipse.xtext.parser.impl.*;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.*;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
-import org.eclipse.xtext.parser.antlr.XtextTokenStream;
-import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
-import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.AbstractInternalAntlrParser;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.XtextTokenStream;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.XtextTokenStream.HiddenTokens;
+import org.eclipse.xtext.uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser.antlr.AntlrDatatypeRuleToken;
 import uk.ac.kcl.inf.mdeoptimiser.languages.services.ScaleSearchGrammarAccess;
 
 }
 
-@parser::members {
+@uk.ac.kcl.inf.mdeoptimiser.infrastructure.scale.results.parser::members {
 
  	private ScaleSearchGrammarAccess grammarAccess;
 
